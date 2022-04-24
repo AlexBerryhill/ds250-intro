@@ -4,129 +4,58 @@ __Alex Berryhill__
 
 ## Elevator pitch
 
-_paste your elevator pitch here_
+So this time we learned how to get altair working, that was not fun. I struggled with nodeJS for 3 hours itself. We have a dataset and want to find the connection from a car's engine size (displ) and a cars fuel efficency in mpg(hwy). Hopefully I did this right.
 
 ### GRAND QUESTION 1
-#### COPY PASTE GRAND QUESTION 1 FROM THE PROJECT HERE
-_type your results and analysis here_
+#### Finish the readings and come to class prepared with any questions to get your environment working smoothly.
+It is working and running smoothly now.
 
 ##### TECHNICAL DETAILS
 
 ```python 
-#paste chart code in this snippet box
-```
+import altair as alt
+import pandas as pd
 
-_insert your chart png here_
-![](CHART.png)
-
-```python 
-#paste your table code in this snippet box
+data = pd.read_csv("data.csv")
+print(data.head(2))
 ```
-_replace the table below with your table_
-|    | animal   |
-|---:|:---------|
-|  0 | elk      |
-|  1 | pig      |
-|  2 | dog      |
-|  3 | quetzal  |
 
 ### GRAND QUESTION 2
-#### COPY PASTE GRAND QUESTION 2 FROM THE PROJECT HERE
-_type your results and analysis here_
+#### Create a python script and use VS Code to create the example Altair chart in the assigned readings (note that you have to type chart to see the Altair chart after you run the code). Save your Altair chart for submission.
+The more Litres in the engine size, the lower the fuel efficency.
 
 ##### TECHNICAL DETAILS
 
 ```python 
-#paste chart code in this snippet box
+chart = alt.Chart(data, title="title").mark_circle().encode(
+    alt.X("displ", title="Displ"),
+    alt.Y("hwy", title="Hwy"),
+    alt.Color("manufacturer")
+).properties(width=400, height=300)
+
+chart
 ```
 
 _insert your chart png here_
 ![](CHART.png)
-
-```python 
-#paste your table code in this snippet box
-```
-_replace the table below with your table_
-|    | animal   |
-|---:|:---------|
-|  0 | elk      |
-|  1 | pig      |
-|  2 | dog      |
-|  3 | quetzal  |
 
 ### GRAND QUESTION 3
-#### COPY PASTE GRAND QUESTION 3Â FROM THE PROJECT HERE
-_type your results and analysis here_
+#### Include the Markdown table created from the following code in your report (assuming you have mpg from question 2).
+It is pretty cool how much data there is, I love using head() to get a little bit of the data.
 
 ##### TECHNICAL DETAILS
 
 ```python 
-#paste chart code in this snippet box
+print(mpg
+    .head(5)
+    .filter(["manufacturer", "model","year", "hwy"])
+    .to_markdown(index=False))
 ```
-
-_insert your chart png here_
-![](CHART.png)
-
-```python 
-#paste your table code in this snippet box
-```
-_replace the table below with your table_
-|    | animal   |
-|---:|:---------|
-|  0 | elk      |
-|  1 | pig      |
-|  2 | dog      |
-|  3 | quetzal  |
-
-### GRAND QUESTION 4
-#### COPY PASTE GRAND QUESTION 4 FROM THE PROJECT HERE
-_type your results and analysis here_
-
-##### TECHNICAL DETAILS
-
-```python 
-#paste chart code in this snippet box
-```
-
-_insert your chart png here_
-![](CHART.png)
-
-```python 
-#paste your table code in this snippet box
-```
-_replace the table below with your table_
-|    | animal   |
-|---:|:---------|
-|  0 | elk      |
-|  1 | pig      |
-|  2 | dog      |
-|  3 | quetzal  |
-
-### GRAND QUESTION 5
-#### COPY PASTE GRAND QUESTION 5 FROM THE PROJECT HERE
-_type your results and analysis here_
-
-##### TECHNICAL DETAILS
-
-```python 
-#paste chart code in this snippet box
-```
-
-_insert your chart png here_
-![](CHART.png)
-
-```python 
-#paste your table code in this snippet box
-```
-_replace the table below with your table_
-|    | animal   |
-|---:|:---------|
-|  0 | elk      |
-|  1 | pig      |
-|  2 | dog      |
-|  3 | quetzal  |
-
-## APPENDIX A (PYTHON CODE)
-```python
-#paste all your code from your python file (.py) here
-```
+The table
+| manufacturer   | model   |   year |   hwy |
+|:---------------|:--------|-------:|------:|
+| audi           | a4      |   1999 |    29 |
+| audi           | a4      |   1999 |    29 |
+| audi           | a4      |   2008 |    31 |
+| audi           | a4      |   2008 |    30 |
+| audi           | a4      |   1999 |    26 |
