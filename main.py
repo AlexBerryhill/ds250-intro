@@ -4,12 +4,17 @@ import pandas as pd
 data = pd.read_csv("data.csv")
 print(data.head(2))
 
-iris_chart = alt.Chart(data, title="title").mark_circle().encode(
+chart = alt.Chart(data, title="title").mark_circle().encode(
     alt.X("cty", title="City"),
     alt.Y("hwy", title="Hwy"),
     alt.Color("manufacturer")
 ).properties(width=400, height=300)
 
-iris_chart
+chart
 
-iris_chart.save("test_iris.png")
+# chart.save("test_iris.png")
+
+print(data
+    .head(5)
+    .filter(["manufacturer", "model","year", "hwy"])
+    .to_markdown(index=False))
